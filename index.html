@@ -1,1 +1,483 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Программирование игр в стиле "Сталкер" на C#</title>
+    <style>
+        :root {
+            --zone-color: #2d5016;
+            --anomaly-color: #8b4513;
+            --text-color: #e0e0e0;
+            --bg-color: #1a1a1a;
+            --accent-color: #ff8c00;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(to right, #2d5016, #1a3a0a);
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        h1 {
+            color: var(--accent-color);
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .subtitle {
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+        
+        nav {
+            background-color: #2a2a2a;
+            padding: 0.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: var(--zone-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            background-color: #252525;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--zone-color);
+        }
+        
+        h2 {
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--zone-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            color: #90c070;
+        }
+        
+        .code-block {
+            background-color: #1e1e1e;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 1rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .game-example {
+            background-color: #2a2a2a;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background-color: var(--zone-color);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .download-btn:hover {
+            background-color: var(--accent-color);
+        }
+        
+        footer {
+            background-color: #1a1a1a;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--zone-color);
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Программирование игр в стиле "Сталкер" на C#</h1>
+        <p class="subtitle">Учебное пособие по созданию игр с атмосферой Зоны Отчуждения</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#intro">Введение</a></li>
+            <li><a href="#basics">Основы C#</a></li>
+            <li><a href="#windows-forms">Windows Forms</a></li>
+            <li><a href="#games">Игры</a></li>
+            <li><a href="#graphics">Графика</a></li>
+            <li><a href="#resources">Ресурсы</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="intro">
+            <h2>Введение в разработку игр "Сталкер"</h2>
+            <p>Добро пожаловать в Зону! Это руководство поможет вам создать собственные игры в стиле "Сталкер" с использованием языка программирования C# и технологии Windows Forms.</p>
+            <p>Мы пройдем путь от основ программирования до создания полноценных игр с аномалиями, артефактами и сталкерами.</p>
+        </section>
+        
+        <section id="basics">
+            <h2>Основы программирования на C#</h2>
+            
+            <h3>Переменные и типы данных</h3>
+            <div class="code-block">
+// Переменные для игры "Сталкер"
+string playerName = "Маркер";
+int health = 100;
+float radiation = 0.0f;
+bool hasGeigerCounter = true;
+double money = 2500.50;
+</div>
 
+            <h3>Условные операторы</h3>
+            <div class="code-block">
+// Проверка состояния сталкера
+if (health <= 0)
+{
+    Console.WriteLine("Смерть в Зоне...");
+}
+else if (radiation > 50.0f && !hasAntiRad)
+{
+    Console.WriteLine("Уровень радиации критический!");
+    health -= 10;
+}
+else
+{
+    Console.WriteLine("Состояние стабильное");
+}
+</div>
+
+            <h3>Циклы</h3>
+            <div class="code-block">
+// Поиск артефактов в Зоне
+int artifactsFound = 0;
+while (artifactsFound < 5)
+{
+    Console.WriteLine("Ищу артефакты...");
+    // Код поиска артефакта
+    if (FoundArtifact())
+    {
+        artifactsFound++;
+        Console.WriteLine($"Найден артефакт! Всего: {artifactsFound}");
+    }
+}
+</div>
+        </section>
+        
+        <section id="windows-forms">
+            <h2>Работа с Windows Forms</h2>
+            
+            <h3>Создание формы</h3>
+            <div class="code-block">
+using System;
+using System.Windows.Forms;
+
+namespace StalkerGame
+{
+    public partial class MainForm : Form
+    {
+        public MainForm()
+        {
+            InitializeComponent();
+            this.Text = "Сталкер: Тень Чернобыля";
+            this.Width = 800;
+            this.Height = 600;
+            this.BackColor = System.Drawing.Color.DarkGreen;
+        }
+    }
+}
+</div>
+
+            <h3>Добавление элементов управления</h3>
+            <div class="code-block">
+// Создание элементов интерфейса сталкера
+Label lblHealth = new Label();
+lblHealth.Text = "Здоровье: 100";
+lblHealth.Location = new Point(10, 10);
+lblHealth.ForeColor = Color.LightGreen;
+this.Controls.Add(lblHealth);
+
+ProgressBar radBar = new ProgressBar();
+radBar.Location = new Point(10, 40);
+radBar.Width = 200;
+radBar.Value = 0;
+this.Controls.Add(radBar);
+
+Button btnUseMedkit = new Button();
+btnUseMedkit.Text = "Использовать аптечку";
+btnUseMedkit.Location = new Point(10, 70);
+btnUseMedkit.Click += BtnUseMedkit_Click;
+this.Controls.Add(btnUseMedkit);
+</div>
+
+            <h3>Обработка событий</h3>
+            <div class="code-block">
+// Обработчик использования аптечки
+private void BtnUseMedkit_Click(object sender, EventArgs e)
+{
+    if (health < 100 && medkits > 0)
+    {
+        health = Math.Min(100, health + 50);
+        medkits--;
+        UpdateUI();
+        MessageBox.Show("Аптечка использована!");
+    }
+    else
+    {
+        MessageBox.Show("Невозможно использовать аптечку!");
+    }
+}
+</div>
+        </section>
+        
+        <section id="games">
+            <h2>Создание игр в стиле "Сталкер"</h2>
+            
+            <h3>Игра "Аномалия"</h3>
+            <div class="game-example">
+                <p>Простая игра, где игрок должен избегать аномалий в Зоне.</p>
+                <div class="code-block">
+// Класс аномалии
+public class Anomaly
+{
+    public Point Location { get; set; }
+    public int Radius { get; set; }
+    public AnomalyType Type { get; set; }
+    
+    public bool CheckCollision(Point playerPos)
+    {
+        double distance = Math.Sqrt(
+            Math.Pow(playerPos.X - Location.X, 2) + 
+            Math.Pow(playerPos.Y - Location.Y, 2)
+        );
+        return distance <= Radius;
+    }
+}
+
+// Основной игровой цикл
+private void GameTimer_Tick(object sender, EventArgs e)
+{
+    // Движение игрока
+    MovePlayer();
+    
+    // Проверка столкновений с аномалиями
+    foreach (Anomaly anomaly in anomalies)
+    {
+        if (anomaly.CheckCollision(player.Location))
+        {
+            TakeDamage(anomaly.Type);
+            break;
+        }
+    }
+    
+    // Обновление интерфейса
+    UpdateUI();
+}
+</div>
+            </div>
+            
+            <h3>Игра "Охота за артефактами"</h3>
+            <div class="game-example">
+                <p>Игрок исследует Зону в поисках ценных артефактов.</p>
+                <div class="code-block">
+// Класс артефакта
+public class Artifact
+{
+    public string Name { get; set; }
+    public Point Location { get; set; }
+    public int Value { get; set; }
+    public float Radiation { get; set; }
+    
+    public void Collect(Player player)
+    {
+        player.Inventory.Add(this);
+        player.Money += this.Value;
+        player.Radiation += this.Radiation;
+    }
+}
+
+// Генерация артефактов на карте
+private void GenerateArtifacts()
+{
+    Random rnd = new Random();
+    for (int i = 0; i < 10; i++)
+    {
+        Artifact artifact = new Artifact();
+        artifact.Name = artifactNames[rnd.Next(artifactNames.Length)];
+        artifact.Location = new Point(
+            rnd.Next(50, mapWidth - 50),
+            rnd.Next(50, mapHeight - 50)
+        );
+        artifact.Value = rnd.Next(100, 5000);
+        artifact.Radiation = (float)rnd.NextDouble() * 10;
+        artifacts.Add(artifact);
+    }
+}
+</div>
+            </div>
+        </section>
+        
+        <section id="graphics">
+            <h2>Работа с графикой</h2>
+            
+            <h3>Отрисовка карты Зоны</h3>
+            <div class="code-block">
+private void DrawMap(Graphics g)
+{
+    // Отрисовка фона
+    g.Clear(Color.DarkGreen);
+    
+    // Отрисовка аномалий
+    foreach (Anomaly anomaly in anomalies)
+    {
+        Brush anomalyBrush;
+        switch (anomaly.Type)
+        {
+            case AnomalyType.Electra:
+                anomalyBrush = new SolidBrush(Color.Yellow);
+                break;
+            case AnomalyType.Burner:
+                anomalyBrush = new SolidBrush(Color.OrangeRed);
+                break;
+            default:
+                anomalyBrush = new SolidBrush(Color.LightBlue);
+                break;
+        }
+        
+        g.FillEllipse(anomalyBrush, 
+            anomaly.Location.X - anomaly.Radius,
+            anomaly.Location.Y - anomaly.Radius,
+            anomaly.Radius * 2,
+            anomaly.Radius * 2);
+    }
+    
+    // Отрисовка игрока
+    g.FillRectangle(Brushes.White, 
+        player.Location.X - 5, 
+        player.Location.Y - 5, 
+        10, 10);
+}
+</div>
+
+            <h3>Анимация сталкера</h3>
+            <div class="code-block">
+// Класс для анимации персонажа
+public class StalkerAnimation
+{
+    private Image[] frames;
+    private int currentFrame = 0;
+    private int animationSpeed = 5;
+    private int counter = 0;
+    
+    public StalkerAnimation()
+    {
+        // Загрузка кадров анимации
+        frames = new Image[4];
+        frames[0] = Properties.Resources.stalker_walk_1;
+        frames[1] = Properties.Resources.stalker_walk_2;
+        frames[2] = Properties.Resources.stalker_walk_3;
+        frames[3] = Properties.Resources.stalker_walk_4;
+    }
+    
+    public void Update()
+    {
+        counter++;
+        if (counter >= animationSpeed)
+        {
+            currentFrame = (currentFrame + 1) % frames.Length;
+            counter = 0;
+        }
+    }
+    
+    public void Draw(Graphics g, Point position)
+    {
+        g.DrawImage(frames[currentFrame], position.X, position.Y);
+    }
+}
+</div>
+        </section>
+        
+        <section id="resources">
+            <h2>Ресурсы для разработки</h2>
+            
+            <h3>Исходные коды</h3>
+            <p>Скачайте полные исходные коды игр и примеров:</p>
+            <a href="#" class="download-btn">Скачать исходные коды</a>
+            
+            <h3>Графические ресурсы</h3>
+            <p>Набор спрайтов и текстур для создания атмосферы Зоны:</p>
+            <a href="#" class="download-btn">Скачать графические ресурсы</a>
+            
+            <h3>Дополнительные материалы</h3>
+            <ul>
+                <li><a href="#">Полная методичка по C#</a></li>
+                <li><a href="#">Документация по Windows Forms</a></li>
+                <li><a href="#">Форумы разработчиков игр</a></li>
+            </ul>
+        </section>
+    </div>
+    
+    <footer>
+        <p>Учебный проект по программированию игр в стиле "Сталкер" | ЧУДО «НАДиП»</p>
+        <p>Методическое пособие по основам программирования на C#</p>
+    </footer>
+</body>
+</html>
