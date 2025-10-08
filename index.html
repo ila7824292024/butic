@@ -1,1 +1,194 @@
+html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Программирование C# в мире Сталкера</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Зона программирования: C# для сталкеров</h1>
+            <p>Изучаем C# через создание игр в стиле S.T.A.L.K.E.R.</p>
+        </div>
+    </header>
 
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#intro">Введение</a></li>
+                <li><a href="#basics">Основы C#</a></li>
+                <li><a href="#games">Игровые проекты</a></li>
+                <li><a href="#resources">Ресурсы</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="intro">
+            <h2>Введение в Зону программирования</h2>
+            <div class="content-block">
+                <p>Добро пожаловать, сталкер! Этот учебный курс проведет вас через основы программирования на C# в атмосфере Зоны из игры S.T.A.L.K.E.R.</p>
+                <p>Мы будем создавать различные приложения и игры, постепенно повышая сложность, как настоящий сталкер, исследующий аномалии Зоны.</p>
+            </div>
+        </section>
+
+        <section id="basics">
+            <h2>Основы программирования на C#</h2>
+            
+            <div class="topic">
+                <h3>1. Введение в Windows Forms</h3>
+                <p>Создаем первые приложения в стиле терминалов Зоны:</p>
+                <ul>
+                    <li>Первое приложение "Детектор аномалий"</li>
+                    <li>Элементы управления: кнопки, поля ввода, метки</li>
+                    <li>Обработка событий</li>
+                </ul>
+                <div class="code-example">
+                    <h4>Пример: Калькулятор артефактов</h4>
+                    <pre><code>// Расчет стоимости найденных артефактов
+private void CalculateButton_Click(object sender, EventArgs e)
+{
+    int artifactCount = Convert.ToInt32(countTextBox.Text);
+    decimal pricePerArtifact = Convert.ToDecimal(priceTextBox.Text);
+    decimal total = artifactCount * pricePerArtifact;
+    resultLabel.Text = $"Общая стоимость: {total} рублей";
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="topic">
+                <h3>2. Основные элементы управления</h3>
+                <p>Создаем интерфейсы для оборудования сталкера:</p>
+                <ul>
+                    <li>TextBox - ввод данных детектора</li>
+                    <li>Button - кнопки управления</li>
+                    <li>Label - отображение показаний</li>
+                    <li>ListBox - список найденных артефактов</li>
+                    <li>ComboBox - выбор типа аномалии</li>
+                </ul>
+            </div>
+
+            <div class="topic">
+                <h3>3. Обработка событий</h3>
+                <p>Реагируем на действия пользователя как на аномалии в Зоне:</p>
+                <div class="code-example">
+                    <pre><code>// Обработка наведения на аномалию
+private void AnomalyPictureBox_MouseEnter(object sender, EventArgs e)
+{
+    dangerLabel.Visible = true;
+    PlayWarningSound();
+}
+
+// Обработка ухода от аномалии
+private void AnomalyPictureBox_MouseLeave(object sender, EventArgs e)
+{
+    dangerLabel.Visible = false;
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="games">
+            <h2>Игровые проекты в стиле Сталкера</h2>
+            
+            <div class="game-project">
+                <h3>1. "Змейка-сталкер"</h3>
+                <p>Классическая змейка с тематикой Зоны:</p>
+                <ul>
+                    <li>Змейка собирает артефакты вместо яблок</li>
+                    <li>Препятствия - аномалии</li>
+                    <li>Бонусы - аптечки и патроны</li>
+                </ul>
+                <a href="examples/snake-game/" class="btn">Посмотреть код</a>
+            </div>
+
+            <div class="game-project">
+                <h3>2. "Платформер в Зоне"</h3>
+                <p>Платформер с сталкером, избегающим аномалий:</p>
+                <ul>
+                    <li>Персонаж - сталкер с детектором</li>
+                    <li>Платформы - разрушенные здания</li>
+                    <li>Враги - мутанты</li>
+                    <li>Цель - добраться до выхода из локации</li>
+                </ul>
+                <a href="examples/platformer/" class="btn">Посмотреть код</a>
+            </div>
+
+            <div class="game-project">
+                <h3>3. "Космический шутер в Зоне"</h3>
+                <p>Шутер с тематикой выброса в Зоне:</p>
+                <ul>
+                    <li>Игрок управляет вертолетом</li>
+                    <li>Враги - летающие артефакты и химеры</li>
+                    <li>Босс - контролер</li>
+                    <li>Использование листов спрайтов</li>
+                </ul>
+                <a href="examples/space-shooter/" class="btn">Посмотреть код</a>
+            </div>
+
+            <div class="game-project">
+                <h3>4. "Выживание в Зоне" - финальный проект</h3>
+                <p>Комплексная игра с элементами RPG:</p>
+                <ul>
+                    <li>Инвентарь сталкера</li>
+                    <li>Система квестов от Сидоровича</li>
+                    <li>Бой с мутантами</li>
+                    <li>Торговля артефактами</li>
+                    <li>Несколько локаций Зоны</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="resources">
+            <h2>Ресурсы для сталкеров-программистов</h2>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>Инструменты</h3>
+                    <ul>
+                        <li>Visual Studio 2022</li>
+                        <li>.NET Framework</li>
+                        <li>Git для контроля версий</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h3>Библиотеки</h3>
+                    <ul>
+                        <li>Windows Forms</li>
+                        <li>System.Drawing</li>
+                        <li>System.Media (для звуков)</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h3>Ассеты</h3>
+                    <ul>
+                        <li>Спрайты в стиле Сталкера</li>
+                        <li>Звуковые эффекты Зоны</li>
+                        <li>Шрифты техно-стиля</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="download-section">
+                <h3>Исходные коды проектов</h3>
+                <p>Все примеры кода доступны в репозитории GitHub:</p>
+                <a href="https://github.com/your-username/stalker-csharp-tutorial" class="btn btn-primary">Перейти к репозиторию</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Зона программирования. Все права защищены, сталкер.</p>
+            <p>Учебные материалы по C# в тематике S.T.A.L.K.E.R.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>
