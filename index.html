@@ -1,454 +1,578 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мир шрифтов | Типографика для веб-дизайна</title>
-    <style>
-        /* Базовые стили и сброс */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
-        }
-        
-        /* Стили заголовков */
-        h1, h2, h3, h4 {
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        
-        /* Контейнер */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Шапка сайта */
-        header {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            font-family: 'Georgia', serif;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        header p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-        
-        /* Навигация */
-        nav {
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 1rem 0;
-        }
-        
-        nav li {
-            margin: 0 1.5rem;
-        }
-        
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav a:hover {
-            color: #6a11cb;
-        }
-        
-        /* Основной контент */
-        main {
-            padding: 3rem 0;
-        }
-        
-        section {
-            margin-bottom: 3rem;
-            background-color: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-        
-        /* Секция с демонстрацией шрифтов */
-        .font-showcase {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .font-card {
-            padding: 1.5rem;
-            border-radius: 8px;
-            background-color: #f8f9fa;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .font-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .font-card h3 {
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #6a11cb;
-            padding-bottom: 0.5rem;
-        }
-        
-        .font-sample {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            min-height: 80px;
-        }
-        
-        .font-info {
-            font-size: 0.9rem;
-            color: #666;
-        }
-        
-        /* Галерея */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        
-        .gallery-item {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .gallery-item:hover {
-            transform: scale(1.03);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-        
-        /* Секция с живым текстом */
-        .live-text-section {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 2rem;
-            border-radius: 8px;
-        }
-        
-        .text-controls {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .control-group {
-            display: flex;
-            flex-direction: column;
-            min-width: 150px;
-        }
-        
-        .control-group label {
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .control-group select, .control-group input {
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        
-        .live-text-display {
-            padding: 2rem;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            min-height: 200px;
-            margin-top: 1rem;
-        }
-        
-        /* Подвал */
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 2rem;
-        }
-        
-        footer p {
-            margin-bottom: 0.5rem;
-        }
-        
-        /* Адаптивность */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.2rem;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav li {
-                margin: 0.5rem 0;
-            }
-            
-            .text-controls {
-                flex-direction: column;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1>Мир шрифтов</h1>
-            <p>Исследуйте разнообразие типографики в веб-дизайне</p>
-        </div>
-    </header>
-    
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="#serif">Шрифты с засечками</a></li>
-                <li><a href="#sans-serif">Рубленые шрифты</a></li>
-                <li><a href="#display">Декоративные шрифты</a></li>
-                <li><a href="#live-text">Живой текст</a></li>
-                <li><a href="#gallery">Галерея</a></li>
-            </ul>
-        </div>
-    </nav>
-    
-    <main class="container">
-        <section id="serif">
-            <h2>Шрифты с засечками (Serif)</h2>
-            <p>Шрифты с засечками характеризуются небольшими штрихами на концах букв. Они считаются более традиционными и часто используются в печатных изданиях.</p>
-            
-            <div class="font-showcase">
-                <div class="font-card">
-                    <h3>Georgia</h3>
-                    <div class="font-sample" style="font-family: Georgia, serif;">
-                        Съешь же ещё этих мягких французских булок, да выпей чаю.
-                    </div>
-                    <p class="font-info">Отлично подходит для основного текста на веб-страницах.</p>
-                </div>
-                
-                <div class="font-card">
-                    <h3>Times New Roman</h3>
-                    <div class="font-sample" style="font-family: 'Times New Roman', Times, serif;">
-                        Съешь же ещё этих мягких французских булок, да выпей чаю.
-                    </div>
-                    <p class="font-info">Классический шрифт, часто используемый в печатных изданиях.</p>
-                </div>
-                
-                <div class="font-card">
-                    <h3>Garamond</h3>
-                    <div class="font-sample" style="font-family: Garamond, serif;">
-                        Съешь же ещё этих мягких французских булок, да выпей чаю.
-                    </div>
-                    <p class="font-info">Элегантный шрифт с историческими корнями, популярен в книгах.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section id="sans-serif">
-            <h2>Рубленые шрифты (Sans-serif)</h2>
-            <p>Шрифты без засечек имеют чистый и современный вид. Они широко используются в веб-дизайне благодаря хорошей читаемости на экранах.</p>
-            
-            <div class="font-showcase">
-                <div class="font-card">
-                    <h3>Arial</h3>
-                    <div class="font-sample" style="font-family: Arial, sans-serif;">
-                        Съешь же ещё этих мягких французских булок, да выпей чаю.
-                    </div>
-                    <p class="font-info">Один из самых распространенных шрифтов без засечек.</p>
-                </div>
-                
-                <div class="font-card">
-                    <h3>Helvetica</h3>
-                    <div class="font-sample" style="font-family: Helvetica, Arial, sans-serif;">
-                        Съешь же ещё этих мягких французских булок, да выпей чаю.
-                    </div>
-                    <p class="font-info">Швейцарский классический шрифт, символ модернизма.</p>
-                </div>
-                
-                <div class="font-card">
-                    <h3>Verdana</h3>
-                    <div class="font-sample" style="font-family: Verdana, Geneva, sans-serif;">
-                        Съешь же ещё этих мягких французских булок, да выпей чаю.
-                    </div>
-                    <p class="font-info">Создан специально для оптимальной читаемости на экранах.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section id="display">
-            <h2>Декоративные шрифты (Display)</h2>
-            <p>Эти шрифты предназначены для привлечения внимания. Они часто используются в заголовках, логотипах и для создания определенного настроения.</p>
-            
-            <div class="font-showcase">
-                <div class="font-card">
-                    <h3>Impact</h3>
-                    <div class="font-sample" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
-                        Съешь же ещё этих мягких французских булок, да выпей чаю.
-                    </div>
-                    <p class="font-info">Жирный шрифт, создающий сильное визуальное воздействие.</p>
-                </div>
-                
-                <div class="font-card">
-                    <h3>Comic Sans MS</h3>
-                    <div class="font-sample" style="font-family: 'Comic Sans MS', cursive;">
-                        Съешь же ещё этих мягких французских булок, да выпей чаю.
-                    </div>
-                    <p class="font-info">Неформальный шрифт, имитирующий рукописный текст.</p>
-                </div>
-                
-                <div class="font-card">
-                    <h3>Courier New</h3>
-                    <div class="font-sample" style="font-family: 'Courier New', Courier, monospace;">
-                        Съешь же ещё этих мягких французских булок, да выпей чаю.
-                    </div>
-                    <p class="font-info">Моноширинный шрифт, имитирующий текст печатной машинки.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section id="live-text" class="live-text-section">
-            <h2>Поэкспериментируйте с живым текстом</h2>
-            <p>Используйте элементы управления ниже, чтобы изменить внешний вид текста и увидеть, как различные шрифты влияют на восприятие.</p>
-            
-            <div class="text-controls">
-                <div class="control-group">
-                    <label for="font-family">Семейство шрифтов:</label>
-                    <select id="font-family">
-                        <option value="Arial, sans-serif">Arial</option>
-                        <option value="'Times New Roman', Times, serif">Times New Roman</option>
-                        <option value="Georgia, serif">Georgia</option>
-                        <option value="Verdana, Geneva, sans-serif">Verdana</option>
-                        <option value="'Courier New', Courier, monospace">Courier New</option>
-                        <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
-                    </select>
-                </div>
-                
-                <div class="control-group">
-                    <label for="font-size">Размер шрифта:</label>
-                    <input type="range" id="font-size" min="12" max="72" value="18">
-                    <span id="font-size-value">18px</span>
-                </div>
-                
-                <div class="control-group">
-                    <label for="font-weight">Насыщенность:</label>
-                    <select id="font-weight">
-                        <option value="normal">Обычный</option>
-                        <option value="bold">Жирный</option>
-                        <option value="lighter">Тонкий</option>
-                    </select>
-                </div>
-                
-                <div class="control-group">
-                    <label for="text-color">Цвет текста:</label>
-                    <input type="color" id="text-color" value="#333333">
-                </div>
-            </div>
-            
-            <div class="live-text-display" id="live-text-display">
-                Типографика — это искусство оформления текста, которое делает письменный язык читаемым, разборчивым и привлекательным при его отображении. Выбор шрифта, размера, межбуквенного и межстрочного расстояния — все это влияет на то, как читатель воспринимает текст.
-            </div>
-        </section>
-        
-        <section id="gallery">
-            <h2>Галерея типографики</h2>
-            <p>Визуальные примеры использования различных шрифтов в дизайне.</p>
-            
-            <div class="gallery">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Типографика в веб-дизайне">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Креативная типографика">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1588072432836-e10032784150?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Шрифты в печати">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1584824486509-112e4181ff6b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Винтажная типографика">
-                </div>
-            </div>
-        </section>
-    </main>
-    
-    <footer>
-        <div class="container">
-            <p>Мир шрифтов &copy; 2023</p>
-            <p>Исследуйте искусство типографики в веб-дизайне</p>
-        </div>
-    </footer>
 
-    <script>
-        // Функциональность для живого текста
-        document.addEventListener('DOMContentLoaded', function() {
-            const fontFamilySelect = document.getElementById('font-family');
-            const fontSizeSlider = document.getElementById('font-size');
-            const fontSizeValue = document.getElementById('font-size-value');
-            const fontWeightSelect = document.getElementById('font-weight');
-            const textColorInput = document.getElementById('text-color');
-            const liveTextDisplay = document.getElementById('live-text-display');
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Квест: Зона Отчуждения</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Arial', sans-serif;
+			background: linear-gradient(135deg, #1a2f1a 0%, #0c1a0c 100%);
+			min-height: 100vh;
+			padding: 20px;
+			color: #c8c8c8;
+			background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.1"><rect fill="%23333" width="100" height="100"/><path d="M0 0L100 100M100 0L0 100" stroke="%23444" stroke-width="1"/></svg>');
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			background: rgba(30, 30, 30, 0.9);
+			border-radius: 5px;
+			box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+			overflow: hidden;
+			border: 1px solid #3a5c3a;
+		}
+
+		.header {
+			background: linear-gradient(to right, #2a472a, #1a2f1a);
+			color: #a0c0a0;
+			padding: 25px;
+			text-align: center;
+			border-bottom: 1px solid #3a5c3a;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.header::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 2px;
+			background: linear-gradient(to right, transparent, #5fa35f, transparent);
+		}
+
+		.header h1 {
+			font-size: 2.2em;
+			margin-bottom: 10px;
+			text-shadow: 0 0 10px rgba(100, 200, 100, 0.5);
+			letter-spacing: 1px;
+		}
+
+		.header p {
+			font-size: 1.1em;
+			opacity: 0.8;
+		}
+
+		.progress-container {
+			margin: 20px 0;
+			background: #1a1a1a;
+			border-radius: 10px;
+			padding: 5px;
+			border: 1px solid #3a5c3a;
+		}
+
+		.progress-bar {
+			height: 12px;
+			background: #1a2f1a;
+			border-radius: 5px;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.progress {
+			height: 100%;
+			background: linear-gradient(to right, #3a7a3a, #5fa35f);
+			width: 0%;
+			transition: width 0.5s ease;
+			position: relative;
+		}
+
+		.progress::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+			animation: shine 2s infinite;
+		}
+
+		@keyframes shine {
+			0% {
+				transform: translateX(-100%);
+			}
+
+			100% {
+				transform: translateX(100%);
+			}
+		}
+
+		.quest-content {
+			padding: 25px;
+			min-height: 450px;
+		}
+
+		.challenge {
+			display: none;
+		}
+
+		.challenge.active {
+			display: block;
+			animation: fadeIn 0.5s ease;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.challenge h2 {
+			color: #7aa57a;
+			margin-bottom: 20px;
+			border-left: 4px solid #5fa35f;
+			padding-left: 15px;
+			font-size: 1.5em;
+			text-shadow: 0 0 5px rgba(100, 200, 100, 0.3);
+		}
+
+		.task {
+			background: rgba(40, 40, 40, 0.7);
+			padding: 20px;
+			border-radius: 5px;
+			margin: 20px 0;
+			border-left: 4px solid #5a7a5a;
+			border-top: 1px solid #3a5c3a;
+		}
+
+		.task p {
+			margin-bottom: 15px;
+			line-height: 1.5;
+		}
+
+		.code-editor {
+			background: #1a1a1a;
+			color: #a0c0a0;
+			padding: 15px;
+			border-radius: 5px;
+			margin: 15px 0;
+			font-family: 'Courier New', monospace;
+			min-height: 120px;
+			border: 1px solid #3a5c3a;
+			position: relative;
+			overflow-x: auto;
+		}
+
+		.code-editor::before {
+			content: "КОД АНОМАЛИИ";
+			position: absolute;
+			top: -10px;
+			left: 10px;
+			background: #1a1a1a;
+			padding: 0 10px;
+			font-size: 0.8em;
+			color: #7aa57a;
+		}
+
+		.input-group {
+			margin: 20px 0;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+		}
+
+		input,
+		select,
+		button {
+			padding: 12px 15px;
+			border: 1px solid #5a7a5a;
+			border-radius: 3px;
+			font-size: 16px;
+			background: #2a2a2a;
+			color: #c8c8c8;
+			flex: 1;
+			min-width: 200px;
+		}
+
+		input:focus,
+		select:focus {
+			outline: none;
+			border-color: #7aa57a;
+			box-shadow: 0 0 5px rgba(100, 200, 100, 0.3);
+		}
+
+		button {
+			background: linear-gradient(to bottom, #3a7a3a, #2a5a2a);
+			color: #e0e0e0;
+			border: 1px solid #5a9a5a;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			font-weight: bold;
+			text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+			flex: none;
+		}
+
+		button:hover {
+			background: linear-gradient(to bottom, #4a8a4a, #3a6a3a);
+			box-shadow: 0 0 10px rgba(100, 200, 100, 0.3);
+		}
+
+		button:active {
+			transform: translateY(1px);
+		}
+
+		.feedback {
+			padding: 15px;
+			border-radius: 5px;
+			margin: 15px 0;
+			display: none;
+			border-left: 4px solid transparent;
+		}
+
+		.feedback.success {
+			background: rgba(40, 80, 40, 0.3);
+			color: #a0e0a0;
+			border-color: #5fa35f;
+			display: block;
+		}
+
+		.feedback.error {
+			background: rgba(80, 40, 40, 0.3);
+			color: #e0a0a0;
+			border-color: #a35f5f;
+			display: block;
+		}
+
+		.hint {
+			background: rgba(80, 80, 40, 0.3);
+			color: #e0e0a0;
+			padding: 12px;
+			border-radius: 5px;
+			margin: 15px 0;
+			font-size: 0.9em;
+			border-left: 4px solid #a3a35f;
+		}
+
+		.completion {
+			text-align: center;
+			padding: 50px 20px;
+			display: none;
+			background: rgba(30, 50, 30, 0.5);
+			border-radius: 5px;
+			margin: 20px 0;
+		}
+
+		.completion h2 {
+			color: #7aa57a;
+			font-size: 2.2em;
+			margin-bottom: 20px;
+			text-shadow: 0 0 10px rgba(100, 200, 100, 0.5);
+		}
+
+		.badge {
+			font-size: 4em;
+			margin: 20px 0;
+			color: #7aa57a;
+			text-shadow: 0 0 15px rgba(100, 200, 100, 0.7);
+		}
+
+		.stalker-icon {
+			font-size: 1.2em;
+			margin-right: 8px;
+		}
+
+		.level-indicator {
+			display: flex;
+			justify-content: space-between;
+			margin-top: 10px;
+			font-size: 0.9em;
+			color: #7a7a7a;
+		}
+
+		.level-indicator span.active {
+			color: #7aa57a;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="header">
+			<h1><span class="stalker-icon">☢️</span> Квест: Bread</h1>
+			<p>Проложи путь через аномалии и стань Bread</p>
+			<div class="progress-container">
+				<div class="progress-bar">
+					<div class="progress" id="progress" style="width: 25%;"></div>
+				</div>
+			</div>
+			<div class="level-indicator">
+				<span class="active">Росток</span>
+				<span>Кордон</span>
+				<span>Тёмная долина</span>
+				<span>Bread</span>
+			</div>
+		</div>
+
+		<div class="quest-content">
+			<!-- Уровень 1: HTML -->
+			<div class="challenge active" id="challenge-1">
+				<h2><span class="stalker-icon">📍</span> Росток: Базовая подготовка</h2>
+				<div class="task">
+					<p>Ты только что прибыл в Зону. Сначала нужно собрать базовое снаряжение. Создай структуру инвентаря
+						сталкера:</p>
+					<div class="code-editor" id="html-editor">
+						&lt;div class="inventory"&gt;
+						&lt;h2&gt;Снаряжение сталкера&lt;/h2&gt;
+						&lt;ul&gt;
+						&lt;li&gt;Противорадиационные таблетки&lt;/li&gt;
+						<span id="html-cursor">&nbsp;</span>
+						&lt;/ul&gt;
+						&lt;/div&gt;
+					</div>
+					<div class="hint">
+						💡 Подсказка: Используй теги &lt;li&gt; для добавления предметов в список снаряжения
+					</div>
+					<div class="input-group">
+						<input type="text" id="html-input" placeholder="Добавь предметы снаряжения (например, &lt;li&gt;Детектор аномалий&lt;/li&gt;)">
+						<button onclick="checkHTML()">Проверить Bread</button>
+					</div>
+					<div class="feedback success" id="html-feedback">✅ Отлично! Снаряжение собрано. Можно двигаться
+						дальше.</div>
+				</div>
+			</div>
+
+			<!-- Уровень 2: CSS -->
+			<div class="challenge" id="challenge-2">
+				<h2><span class="stalker-icon">🌫️</span> Кордон: Маскировка и защита</h2>
+				<div class="task">
+					<p>Ты на Кордоне. Чтобы слиться с окружающей средой, нужно настроить камуфляж. Добавь защитные стили
+						для своего снаряжения:</p>
+					<div class="code-editor">
+						/* Защитный камуфляж для сталкера */
+						.stalker-gear {
+						<span id="css-cursor">&nbsp;</span>
+						}
+
+						/* Экипировка должна быть незаметной */
+						.inventory {
+						border: 1px solid #3a5c3a;
+						}
+					</div>
+					<div class="input-group">
+						<select id="css-select">
+                            <option value="">Выбери камуфляж</option>
+                            <option value="background: #2a472a; color: #a0c0a0;">Лесной камуфляж</option>
+                            <option value="background: #5a5a5a; color: #c0c0c0;">Городской камуфляж</option>
+                            <option value="background: #1a1a1a; color: #7a7a7a;">Ночной камуфляж</option>
+                        </select>
+						<button onclick="checkCSS()">Применить камуфляж</button>
+					</div>
+					<div class="feedback success" id="css-feedback">🎨 Отличный Bread! Тебя труднее заметить в Зоне.
+					</div>
+				</div>
+			</div>
+
+			<!-- Уровень 3: JavaScript -->
+			<div class="challenge" id="challenge-3">
+				<h2><span class="stalker-icon">⚡</span> Тёмная долина: Взаимодействие с аномалиями</h2>
+				<div class="task">
+					<p>Ты в Тёмной долине, где полно аномалий. Напиши код для детектора аномалий, который предупредит об
+						опасности:</p>
+					<div class="code-editor">
+						// Детектор аномалий сталкера
+						const anomalyDetector = {
+						active: true,
+
+						checkArea: function() {
+						<span id="js-cursor">&nbsp;</span>
+						}
+						};
+
+						anomalyDetector.checkArea();
+					</div>
+					<div class="input-group">
+						<input type="text" id="js-input" placeholder="Что должен сделать детектор при обнаружении аномалии?">
+						<button onclick="checkJS()">Просканировать область</button>
+					</div>
+					<div class="feedback success" id="js-feedback">⚡ Детектор работает исправно! Ты избежал опасной
+						аномалии.</div>
+				</div>
+			</div>
+
+			<!-- Уровень 4: Комбинированный -->
+			<div class="challenge" id="challenge-4">
+				<h2><span class="stalker-icon">🏚️</span> Припять: Финальное испытание</h2>
+				<div class="task">
+					<p>Ты достиг Припяти. Создай систему для отслеживания артефактов в твоей коллекции:</p>
+					<div class="code-editor">
+						&lt;!-- Инвентарь артефактов --&gt;
+						&lt;div id="artifact-tracker"&gt;
+						&lt;h3&gt;Коллекция артефактов&lt;/h3&gt;
+						&lt;div class="artifact" data-type="Огненный шар"&gt;
+						&lt;span class="artifact-name"&gt;Огненный шар&lt;/span&gt;
+						&lt;button class="analyze-btn"&gt;Проанализировать&lt;/button&gt;
+						&lt;/div&gt;
+						&lt;/div&gt;
+
+						&lt;style&gt;
+						.artifact {
+						padding: 10px;
+						margin: 5px 0;
+						background: #2a2a2a;
+						border-left: 3px solid #7a3a3a;
+						}
+						&lt;/style&gt;
+
+						&lt;script&gt;
+						// Функционал для анализа артефактов
+						<span id="combined-cursor">&nbsp;</span>
+						&lt;/script&gt;
+					</div>
+					<div class="input-group">
+						<button onclick="showHint(4)">Запросить помощь Сидоровича</button>
+						<button onclick="checkCombined()">Активировать систему</button>
+					</div>
+					<div class="feedback" id="combined-feedback"></div>
+				</div>
+			</div>
+
+			<!-- Завершение -->
+			<div class="completion" id="completion">
+				<div class="badge">🏆</div>
+				<h2>Поздравляем, сталкер!</h2>
+				<p>Ты успешно прошел все испытания Зоны Отчуждения!</p>
+				<p>Теперь ты BREAD, готовый к любым аномалиям.</p>
+				<button onclick="restartQuest()">Вернуться в Зону</button>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		let currentLevel = 1;
+        const totalLevels = 4;
+
+        function updateProgress() {
+            const progress = (currentLevel / totalLevels) * 100;
+            document.getElementById('progress').style.width = progress + '%';
             
-            // Обновление отображения при изменении настроек
-            function updateTextDisplay() {
-                liveTextDisplay.style.fontFamily = fontFamilySelect.value;
-                liveTextDisplay.style.fontSize = fontSizeSlider.value + 'px';
-                liveTextDisplay.style.fontWeight = fontWeightSelect.value;
-                liveTextDisplay.style.color = textColorInput.value;
-                fontSizeValue.textContent = fontSizeSlider.value + 'px';
+            // Обновляем индикаторы уровней
+            const indicators = document.querySelectorAll('.level-indicator span');
+            indicators.forEach((indicator, index) => {
+                if (index + 1 <= currentLevel) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        function showLevel(level) {
+            document.querySelectorAll('.challenge').forEach(challenge => {
+                challenge.classList.remove('active');
+            });
+            document.getElementById(`challenge-${level}`).classList.add('active');
+        }
+
+        function checkHTML() {
+            const input = document.getElementById('html-input').value.toLowerCase();
+            const feedback = document.getElementById('html-feedback');
+            
+            if (input.includes('<li>') && input.includes('</li>') && 
+                (input.includes('артефакт') || input.includes('детектор') || input.includes('броня') || 
+                 input.includes('оружие') || input.includes('продукты'))) {
+                feedback.className = 'feedback success';
+                feedback.innerHTML = '✅ Отлично! Снаряжение собрано. Можно двигаться дальше.';
+                setTimeout(() => {
+                    currentLevel = 2;
+                    showLevel(2);
+                    updateProgress();
+                }, 1500);
+            } else {
+                feedback.className = 'feedback error';
+                feedback.innerHTML = '❌ Неполное снаряжение! Добавь предметы сталкера в формате &lt;li&gt;Название&lt;/li&gt;';
             }
+        }
+
+        function checkCSS() {
+            const select = document.getElementById('css-select');
+            const feedback = document.getElementById('css-feedback');
             
-            // Слушатели событий
-            fontFamilySelect.addEventListener('change', updateTextDisplay);
-            fontSizeSlider.addEventListener('input', updateTextDisplay);
-            fontWeightSelect.addEventListener('change', updateTextDisplay);
-            textColorInput.addEventListener('input', updateTextDisplay);
+            if (select.value === "background: #2a472a; color: #a0c0a0;") {
+                feedback.className = 'feedback success';
+                feedback.innerHTML = '🎨 Отличный выбор! Тебя труднее заметить в Зоне.';
+                setTimeout(() => {
+                    currentLevel = 3;
+                    showLevel(3);
+                    updateProgress();
+                }, 1500);
+            } else {
+                feedback.className = 'feedback error';
+                feedback.innerHTML = '🎨 Этот камуфляж слишком заметен в лесу! Попробуй лесной камуфляж.';
+            }
+        }
+
+        function checkJS() {
+            const input = document.getElementById('js-input').value.toLowerCase();
+            const feedback = document.getElementById('js-feedback');
             
-            // Инициализация
-            updateTextDisplay();
-        });
-    </script>
+            if (input.includes('alert') || input.includes('предупредить') || input.includes('опасность') || 
+                input.includes('сигнал') || input.includes('избежать')) {
+                feedback.className = 'feedback success';
+                feedback.innerHTML = '⚡ Детектор работает исправно! Ты избежал опасной аномалии.';
+                setTimeout(() => {
+                    currentLevel = 4;
+                    showLevel(4);
+                    updateProgress();
+                }, 1500);
+            } else {
+                feedback.className = 'feedback error';
+                feedback.innerHTML = '⚡ Детектор не сработал! Нужно добавить код предупреждения об аномалии.';
+            }
+        }
+
+        function checkCombined() {
+            const feedback = document.getElementById('combined-feedback');
+            
+            feedback.className = 'feedback success';
+            feedback.innerHTML = '🔗 Идеально! Система отслеживания артефактов активирована. Ты стал мастером Зоны!';
+            
+            setTimeout(() => {
+                document.getElementById('completion').style.display = 'block';
+                document.querySelectorAll('.challenge').forEach(challenge => {
+                    challenge.style.display = 'none';
+                });
+            }, 2000);
+        }
+
+        function showHint(level) {
+            const feedback = document.getElementById('combined-feedback');
+            feedback.className = 'feedback success';
+            feedback.innerHTML = '💡 Подсказка от Сидоровича: Нужно добавить обработчик события для кнопки, который выводит информацию об артефакте.';
+        }
+
+        function restartQuest() {
+            currentLevel = 1;
+            updateProgress();
+            showLevel(1);
+            document.getElementById('completion').style.display = 'none';
+            
+            // Сброс всех полей ввода
+            document.getElementById('html-input').value = '';
+            document.getElementById('css-select').selectedIndex = 0;
+            document.getElementById('js-input').value = '';
+        }
+
+        // Инициализация
+        updateProgress();
+	</script>
 </body>
+
 </html>
